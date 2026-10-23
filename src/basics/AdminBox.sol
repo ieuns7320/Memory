@@ -2,6 +2,8 @@
 pragma solidity ^0.8.20;
 
 contract AdminBox {
+    event ConfigChanged(address indexed by, uint256 oldValue, uint256 newValue);
+
     address public owner;
     uint256 public config;
 
@@ -21,7 +23,9 @@ contract AdminBox {
     }
 
     function setConfig(uint256 v) external onlyOwner {
+        uint256 old = config;
         config = v;
+        emit ConfigChanged(msg.sender, old, v);
     }
 
     function setConfigSilent(uint256 v) external onlyOwnerSilent {

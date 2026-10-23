@@ -17,12 +17,17 @@ contract AdminBoxTest is Test {
         assertEq(adminbox.config(), 5);
     }
 
-
     function test_setConfig() external {
         vm.prank(bob);
         vm.expectRevert(bytes("not owner"));
         adminbox.setConfig(5);
         assertEq(adminbox.config(), 0);
+    }
+
+    function test_setConfig_event() external {
+        vm.expectEmit(true, false, false, true, address(adminbox));
+        emit AdminBox.ConfigChanged(address(this), 0, 7);
+        adminbox.setConfig(7);
     }
 
     function test_setConfigSilentOwner() external {
