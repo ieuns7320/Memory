@@ -13,13 +13,13 @@ contract AdminBoxTest is Test {
     }
 
     function test_setConfigOwner() external {
-        adminbox.setConfig(5);
-        assertEq(adminbox.config(), 5);
+        adminbox.setConfig(101);
+        assertEq(adminbox.config(), 101);
     }
 
     function test_setConfig() external {
         vm.prank(bob);
-        vm.expectRevert(bytes("not owner"));
+        vm.expectRevert(abi.encodeWithSelector(AdminBox.NotOwner.selector, bob));
         adminbox.setConfig(5);
         assertEq(adminbox.config(), 0);
     }
