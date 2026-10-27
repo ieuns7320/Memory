@@ -2,10 +2,21 @@
 pragma solidity ^0.8.20;
 
 contract Parent {
-    function pubF() public pure returns (uint256) { return 1; }
-    function extF() external pure returns (uint256) { return  2; }
-    function intF() internal pure returns (uint256) { return 3; }
-    function privF() private pure returns (uint256) { return 4; }
+    function pubF() public pure returns (uint256) {
+        return 1;
+    }
+
+    function extF() external pure returns (uint256) {
+        return 2;
+    }
+
+    function intF() internal pure returns (uint256) {
+        return 3;
+    }
+
+    function privF() private pure returns (uint256) {
+        return 4;
+    }
 
     function fromInside() public view returns (uint256 s) {
         s += pubF();

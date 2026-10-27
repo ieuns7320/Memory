@@ -7,7 +7,9 @@ contract Base {
     address public owner;
     uint256 public value;
 
-    constructor() { owner = msg.sender; }
+    constructor() {
+        owner = msg.sender;
+    }
 
     modifier onlyOwner() {
         if (msg.sender != owner) revert NotOwner(msg.sender);

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import { Test } from "forge-std/Test.sol";
+import {Test} from "forge-std/Test.sol";
 import "../../src/basics/Members.sol";
 
 contract MembersTest is Test {
@@ -25,7 +25,7 @@ contract MembersTest is Test {
         vm.stopPrank();
 
         assertEq(members.memberList(3), alice);
-        (uint256 score, ) = members.members(alice);
+        (uint256 score,) = members.members(alice);
         assertEq(score, 0);
         assertEq(members.count(), 4);
     }
