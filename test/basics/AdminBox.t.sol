@@ -13,8 +13,8 @@ contract AdminBoxTest is Test {
     }
 
     function test_setConfigOwner() external {
-        adminbox.setConfig(101);
-        assertEq(adminbox.config(), 101);
+        adminbox.setConfig(100);
+        assertEq(adminbox.config(), 100);
     }
 
     function test_setConfig() external {
