@@ -19,10 +19,10 @@ contract VipClubTest is Test {
     VipClub vipclub;
 
     function setUp() external {
-        realpoints = new RealPoints();          // owner = 테스트 컨트랙트
+        realpoints = new RealPoints(); // owner = 테스트 컨트랙트
         fakepoints = new FakePoints();
         vulnerable = new VipClubVulnerable();
-        vipclub = new VipClub(realpoints); 
+        vipclub = new VipClub(realpoints);
         realpoints.mint(alice, 100);
     }
 
@@ -49,7 +49,7 @@ contract VipClubTest is Test {
         vm.stopPrank();
     }
 
-    function test_fixed_alice_becomesVip() external {   
+    function test_fixed_alice_becomesVip() external {
         vm.startPrank(alice);
         assertEq(realpoints.balanceOf(alice), 100);
         assertEq(vipclub.isVip(alice), false);
